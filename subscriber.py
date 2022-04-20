@@ -14,6 +14,12 @@ subscription_path = 'projects/still-sensor-339610/subscriptions/Testing-PubSub-P
 def callback(message):
     print('Recevied message:'+{message})
     print('data: '+ {message.data})
+
+    if message.attr:
+        print('attributes')
+        for key in message.attr:
+            value = message.attr.get(key)
+            print(f"{key}: {value}")
     message.ack()
 
 streaming_pull_future = subscriber.subscribe(subscription_path, callback=callback)

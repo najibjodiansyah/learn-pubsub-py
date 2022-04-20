@@ -11,7 +11,11 @@ topic_path = 'projects/still-sensor-339610/topics/Testing-PubSub-Py'
 
 data = 'Ini data untuk dikirim ke pubsub testing'
 data = data.encode('utf-8')
+attr = {
+    'name': 'najib',
+    'class': 'masterclass',
+}
 
-future = publisher.publish(topic_path, data)
+future = publisher.publish(topic_path, data, **attr)
 # print(f'published message id {future.result()}')
 print('published message id '+ future.result())
